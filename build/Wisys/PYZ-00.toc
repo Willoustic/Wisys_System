@@ -464,6 +464,9 @@
    'C:\\Users\\POSTO '
    'NH\\Documents\\GitHub\\Wisys_System\\Tela\\senha_window.py',
    'PYMODULE'),
+  ('Tela.warning',
+   'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\Tela\\warning.py',
+   'PYMODULE'),
   ('__future__',
    'C:\\Users\\POSTO '
    'NH\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\__future__.py',
