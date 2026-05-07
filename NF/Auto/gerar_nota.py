@@ -149,13 +149,27 @@ class Ticket():
 
     def clicar_chrome(self):
         chrome = self.pst.join('chrome.png')
-        Img.click(chrome, 0.9)
-
+        chrome_2 = self.pst.join('chrome_2.png')
+        while True:
+            if Img.verifica_na_tela(chrome, 0.9) == True:
+                Img.click(chrome, 0.9)
+                break
+            elif Img.verifica_na_tela(chrome_2, 0.9) == True:
+                Img.click(chrome_2, 0.9)
+                break
 
     def verifica_aba(self):
         enviar_aba = self.pst.join('enviar_aba.png')
-        Img.verificar_até_achar(enviar_aba, 0.8)
-        sleep(1)
+        anexar_good = self.pst.join('anexar_good.png')
+
+        while True:
+            if Img.verifica_na_tela(enviar_aba, 0.8) == True:
+                self.aba = 'antiga'
+                break
+            elif Img.verifica_na_tela(anexar_good, 0.8) == True:
+                    self.aba = 'nova'
+                    break
+            sleep(1)
 
 
     def select_serviço(self):
@@ -173,12 +187,17 @@ class Ticket():
         px.write(str(numero))
 
 
-    def escolher_arquivo(self):
+    def escolher_arquivo(self, aba):
         escolher_aba = self.pst.join('escolher_aba.png')
         escolher_arquivo = self.pst.join('escolher_arquivo.png')
         escolher_aba_1 = self.pst.join('escolher_aba_1.png')
+        anexar_good = self.pst.join('anexar_good.png')
+        
+        if aba == 'antiga':
+            Img.click(escolher_arquivo, 0.8)
+        elif aba == 'nova':
+            Img.click(anexar_good, 0.8)
 
-        Img.click(escolher_arquivo, 0.8)
         while True:
             if Img.verifica_na_tela(escolher_aba, 0.9) == True:
                 x, y = Img.coordenadas(escolher_aba, 0.9)
@@ -206,9 +225,10 @@ class Ticket():
     def enviar_nota(self, nr_nota):
         self.clicar_chrome()
         self.verifica_aba()
-        self.select_serviço()
-        self.digitar_nota(numero=nr_nota)
-        self.escolher_arquivo()
+        if self.aba == 'antiga':
+            self.select_serviço()
+            self.digitar_nota(numero=nr_nota)
+        self.escolher_arquivo(aba=self.aba)
         self.confirmar()
 
 

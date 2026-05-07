@@ -318,9 +318,14 @@ class Caixa():
 
             Img.click(ok_button, precisão=0.9)
             Img.verificar_até_achar(realizando_consulta, 0.9)
+            x_cons, y_cons = Img.coordenadas(realizando_consulta, 0.9)
+            px.moveTo(x_cons, y_cons)
             Img.verificar_até_sair(realizando_consulta, 0.9)
+            sleep(1)
+
             while Img.verifica_na_tela(venda_cartao, 0.9) == False:
-                px.hotkey('alt', 'tab')
+                # era px.hotkey('alt', 'tab') mas não deu certo
+                px.click()
             Img.click(venda_cartao, precisão=0.9)
             Img.click(sair, precisão=0.9)
             px.press('space')

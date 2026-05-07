@@ -176,16 +176,17 @@ class Emsys:
 
 
     def verificar_login(self):
-        imagem = os.path.join('Images', 'Emsys', 'usuario_logado.png')
+        imagem = os.path.join('Images', 'Emsys', 'usuario_deslogado.png')
         try:
             usuario_deslogged = px.locateOnScreen(imagem, confidence=0.5)
         except Exception as e:
-            print('Usuário deslogado')
-            login = False        
-        else:
             print('Usuário logado')
-            login = True
+            login = True        
+        else:
+            print('Usuário deslogado')
+            login = False
 
+        if login:
             if str(self.posto) == '1':
                 verify_posto = os.path.join('Images', 'Emsys', 'Posto_1.png')
                 try:
