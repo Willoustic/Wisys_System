@@ -159,9 +159,15 @@ class Emsys:
             px.write('Y01')
             sleep(5)
 
+        usuario_deslogado = imagens_Emsys().join('usuario_deslogado.png')
+        if Img.verifica_na_tela(usuario_deslogado, 0.9) == False:
+            login_logout()
+            Img.verificar_até_achar(usuario_deslogado, 0.9)
+            sleep(2)
+        
         login_logout()
 
-        login_image = os.path.join('Images', 'Emsys', 'Emsys_Login.png')
+        login_image = os.path.join('Images', 'Emsys', 'Emsys_Login.png') 
         while True:
             try:
                 do_login = px.locateOnScreen(login_image, confidence=0.5)
@@ -170,21 +176,21 @@ class Emsys:
             else:
                 sleep(1)
                 px.press('tab')
-                Emsys.login(usuario=self.usuario, senha=self.senha, posto=self.posto)
+                self.login()
                 break
             sleep(1)
 
 
     def verificar_login(self):
-        imagem = os.path.join('Images', 'Emsys', 'usuario_deslogado.png')
+        imagem = os.path.join('Images', 'Emsys', 'Usuarios', f'{str(self.usuario).lower()}.png')
         try:
             usuario_deslogged = px.locateOnScreen(imagem, confidence=0.5)
         except Exception as e:
-            print('Usuário logado')
-            login = True        
-        else:
             print('Usuário deslogado')
-            login = False
+            login = False        
+        else:
+            print('Usuário logado')
+            login = True
 
         if login:
             if str(self.posto) == '1':

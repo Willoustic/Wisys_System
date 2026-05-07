@@ -2,7 +2,7 @@ import tkinter as tk
 from .Login import Tela_Login
 from .Select_posto import Tela_Select, Banco
 from functions.caminho import resource_path
-
+from .warning import warning_box
 
 class Tela:
     def __init__(self, root, nome: None, senha: None, cod: None, posto: None, tipo: None, classe: None):
@@ -20,6 +20,7 @@ class Tela:
         self.app.protocol("WM_DELETE_WINDOW", self.fechar)
         self._configurado = False
         self.configure_app()
+        warning_box()
 
     def fechar(self):
         self._resultado = 'close'
