@@ -420,6 +420,16 @@
    'C:\\Users\\POSTO '
    'NH\\Documents\\GitHub\\Wisys_System\\Sangrias\\backend\\valores.py',
    'PYMODULE'),
+  ('Sites', '-', 'PYMODULE'),
+  ('Sites.bot_chrome',
+   'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\Sites\\bot_chrome.py',
+   'PYMODULE'),
+  ('Sites.chrome',
+   'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\Sites\\chrome.py',
+   'PYMODULE'),
+  ('Sites.url_sites',
+   'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\Sites\\url_sites.py',
+   'PYMODULE'),
   ('Tela', '-', 'PYMODULE'),
   ('Tela.Login',
    'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\Tela\\Login.py',
@@ -655,6 +665,10 @@
   ('backend.get_bancos',
    'C:\\Users\\POSTO '
    'NH\\Documents\\GitHub\\Wisys_System\\backend\\get_bancos.py',
+   'PYMODULE'),
+  ('backend.get_logins',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\backend\\get_logins.py',
    'PYMODULE'),
   ('backend.get_postos',
    'C:\\Users\\POSTO '

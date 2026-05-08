@@ -4,10 +4,14 @@ from PDV_Automatico.pdv import Caixa, Caixas
 from Emsys.login_emsys import Emsys
 from Sangrias.autom.auto import Sangrias
 from functions.caminho import resource_path
+from Sites.bot_chrome import BotMaster
 import os
 
 def pdv_window(master, cod_posto, usuario, senha):
     from datetime import datetime
+
+    # Comandos
+
     def data_format(event):
         data = periodo_entry_pdv.get().replace('/', '')
         data = ''.join(filter(str.isdigit, data))[:8]
@@ -97,6 +101,12 @@ def pdv_window(master, cod_posto, usuario, senha):
             Caixa.select_data(data_pdv)
             Caixa.excluir_sangria()
 
+    def cmd_sites():
+        BotMaster(cod=cod_posto).run()
+    
+
+    # Janela
+
     win_pdv = tk.Toplevel()
     win_pdv.configure(bg='gray10')
     win_pdv.title('PDV Fechamento de Caixa')
@@ -127,6 +137,12 @@ def pdv_window(master, cod_posto, usuario, senha):
     # abrir pasta dos relatórios
     relatorios_button = tk.Button(win_pdv, text='Relátorios', bg='white', fg='black', font=('Times, 16 italic'), command=lambda: os.startfile(resource_path('Arquivos', 'Relatorios')))
     relatorios_button.place(x=70, y=140, width=130, height=40)
+
+    # abrir os sites referente ao posto selecionado
+    site_button = tk.Button(win_pdv, text='Sites', bg='dodgerblue3', fg='white', font=('Times, 12'), command=cmd_sites)
+    site_button.place(x=10, y=5, width=80, height=30)
+
+
 
     
     
