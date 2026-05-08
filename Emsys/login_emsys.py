@@ -196,7 +196,7 @@ class Emsys:
             if str(self.posto) == '1':
                 verify_posto = os.path.join('Images', 'Emsys', 'Posto_1.png')
                 try:
-                    pdv_aberto = px.locateOnScreen(verify_posto, confidence=0.95)
+                    pdv_aberto = px.locateOnScreen(verify_posto, confidence=0.85)
                 except:
                     px.press('alt')
                     sleep(0.2)
@@ -209,7 +209,7 @@ class Emsys:
             elif str(self.posto) == '2':
                 verify_posto = os.path.join('Images', 'Emsys', 'Posto_2.png')
                 try:
-                    verificar_posto = px.locateOnScreen(verify_posto, confidence=0.95)
+                    verificar_posto = px.locateOnScreen(verify_posto, confidence=0.85)
                 except:
                     px.press('alt')
                     sleep(0.2)
@@ -222,7 +222,7 @@ class Emsys:
             if str(self.posto) == '3':
                 verify_posto = os.path.join('Images', 'Emsys', 'Posto_3.png')
                 try:
-                    verificar_posto = px.locateOnScreen(verify_posto, confidence=0.95)
+                    verificar_posto = px.locateOnScreen(verify_posto, confidence=0.85)
                 except:
                     px.press('alt')
                     sleep(0.2)
