@@ -47,13 +47,13 @@ class Script():
             print(hora)
             
             if hora == '05:00:00':
-                Emsys(posto=1, name='usuario', password='password').run()
+                Emsys(posto=1, name='usuario', password='senha').run()
                 Caixas(dia=dia, mes=mes, ano=ano, posto=1).Iniciar()
                 sleep(10)
-                Emsys(posto=2, name='usuario', password='password').run()
+                Emsys(posto=2, name='usuario', password='senha').run()
                 Caixas(dia=dia, mes=mes, ano=ano, posto=2).Iniciar()
                 sleep(10)
-                Emsys(posto=3, name='usuario', password='password').run()
+                Emsys(posto=3, name='usuario', password='senha').run()
                 Caixas(dia=dia, mes=mes, ano=ano, posto=3).Iniciar()
                 sleep(10)
                 os.system("shutdown /s /t 0")
