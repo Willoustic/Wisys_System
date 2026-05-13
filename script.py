@@ -21,7 +21,7 @@ class Data():
             mes = int(datetime.today().month)
 
         self.ano = datetime.today().year 
-        self.dia = formatacao(dia_atual)
+        self.dia = formatacao(dia_anterior)
         self.mes = formatacao(mes)
 
         self.data = f'{self.dia}/{self.mes}/{self.ano}'
@@ -47,15 +47,15 @@ class Script():
             print(hora)
             
             if hora == '05:00:00':
-                Emsys(posto=1, name='usuario', password='senha').run()
-                Caixas(dia=dia, mes=mes, ano=ano, posto=1).Iniciar()
-                sleep(10)
                 Emsys(posto=2, name='usuario', password='senha').run()
                 Caixas(dia=dia, mes=mes, ano=ano, posto=2).Iniciar()
-                sleep(10)
-                Emsys(posto=3, name='usuario', password='senha').run()
+                sleep(3)
+                Emsys(posto=3, name='usuario', password='senha').verificar_login()
                 Caixas(dia=dia, mes=mes, ano=ano, posto=3).Iniciar()
-                sleep(10)
-                os.system("shutdown /s /t 0")
+                sleep(3)
+                Emsys(posto=1, name='usuario', password='senha').verificar_login()
+                Caixas(dia=dia, mes=mes, ano=ano, posto=1).Iniciar()
+                os.system('shutdown /s /t 0')
+
 
 Script()

@@ -298,6 +298,8 @@ class Caixa():
             salvar = imagens.join('salvar.png')
             salvo = imagens.join('salvo.png')
             template = imagens.join('template.png')
+            template2 = imagens.join('template2.png')
+            cod_empresa = imagens.join('cod_empresa.png')
 
             
             Img.click(rel, precisão=0.9)
@@ -307,9 +309,21 @@ class Caixa():
             Img.click(csv_select, precisão=0.9)
             Img.click(gerar_relatorio, precisão=0.9)
 
-            Img.verificar_até_achar(data_select, precisão=0.9)
-            
+            Img.verificar_até_sair(template, precisão=0.99)
+            Img.verificar_até_achar(template2, 0.99)
+
+            while Img.verifica_na_tela(data_select, precisão=0.9) == False:
+                if Img.verifica_na_tela(template, precisão=0.8) == True:
+                    Img.click(template, precisão=0.8)
+                else:
+                    Emsys.abrir()
+
+                if Img.verifica_na_tela(data_select, precisão=0.9) == False:
+                    px.hotkey('alt', 'esc')
+
+
             # digitar posto
+            Img.click(cod_empresa, precisão=0.9)
             px.write(str(posto))
             px.press('tab')
 
@@ -323,9 +337,20 @@ class Caixa():
             Img.verificar_até_sair(realizando_consulta, 0.9)
             sleep(1)
 
-            while Img.verifica_na_tela(venda_cartao, 0.9) == False:
-                # era px.hotkey('alt', 'tab') mas não deu certo
-                px.click()
+
+            Img.verificar_até_sair(template, precisão=0.99)
+            Img.verificar_até_achar(template2, 0.99)
+
+            while Img.verifica_na_tela(venda_cartao, precisão=0.9) == False:
+                if Img.verifica_na_tela(template, precisão=0.8) == True:
+                    Img.click(template, precisão=0.8)
+                else:
+                    Emsys.abrir()
+
+                if Img.verifica_na_tela(venda_cartao, precisão=0.9) == False:
+                    px.hotkey('alt', 'esc')
+
+
             Img.click(venda_cartao, precisão=0.9)
             Img.click(sair, precisão=0.9)
             px.press('space')
