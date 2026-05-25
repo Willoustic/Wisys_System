@@ -2,10 +2,10 @@ from functions.tela import tela_na_resolução
 import tkinter as tk
 from PDV_Automatico.pdv import Caixa, Caixas
 from Emsys.login_emsys import Emsys
-from Sangrias.autom.auto import Sangrias
 from functions.caminho import resource_path
 from Sites.bot_chrome import BotMaster
 import os
+from backend.get_postos import Banco
 
 def pdv_window(master, cod_posto, usuario, senha):
     from datetime import datetime
@@ -29,7 +29,7 @@ def pdv_window(master, cod_posto, usuario, senha):
         periodo_entry_pdv.insert(0, nova_data)
 
 
-    def pdv_incializar():
+    def pdv_inicializar():
         data_pdv = periodo_entry_pdv.get()
         data_pdv = str(data_pdv).replace('/', '')
         try:
@@ -68,38 +68,30 @@ def pdv_window(master, cod_posto, usuario, senha):
             Emsys(posto=cod_posto, name=usuario, password=senha).run()
             Caixas(dia=dia, mes=mes, ano=ano, posto=cod_posto).Finalizar()
 
-
-    def pdv_rateio():
-        data_pdv = periodo_entry_pdv.get()
-        data_pdv = str(data_pdv).replace('/', '')     
-        
-        if len(data_pdv) >= 4:         
-            Emsys(posto=cod_posto, name=usuario, password=senha).run()
-            Emsys.abrir_pdv()
-            Caixa.select_data(data_pdv)
-            Caixa.inserir_rateio()
-
-
-    def pdv_confirmar():
+    def pdv_inicializar_all():
         data_pdv = periodo_entry_pdv.get()
         data_pdv = str(data_pdv).replace('/', '')
+        try:
+            if len(data_pdv) > 4:
+                dia = data_pdv[:2]
+                mes = data_pdv[2:4] 
+                ano = data_pdv[-4:]
+            elif len(data_pdv) < 4:
+                dia = data_pdv[:2]
+                mes = data_pdv[2:4] 
+                ano = str(datetime.today().year)
+        except:
+            pass
 
         if len(data_pdv) >= 4:
-            Emsys(posto=cod_posto, name=usuario, password=senha).run()
-            Emsys.abrir_pdv()
-            Caixa.select_data(data_pdv)
-            Caixa.confirmar()
-            
+            banco = Banco()
+    
+            for posto in banco.get_nomes():
+                if (banco.get_class(posto) == 'All'):
+                    cod = banco.get_id(posto)
+                    Emsys(posto=cod, name=usuario, password=senha).run()
+                    Caixas(dia=dia, mes=mes, ano=ano, posto=cod).Iniciar()
 
-    def pdv_excluir():
-        data_pdv = periodo_entry_pdv.get()
-        data_pdv = str(data_pdv).replace('/', '')
-
-        if len(data_pdv) >= 4:
-            Emsys(posto=cod_posto, name=usuario, password=senha).run()
-            Emsys.abrir_pdv()
-            Caixa.select_data(data_pdv)
-            Caixa.excluir_sangria()
 
     def cmd_sites():
         BotMaster(cod=cod_posto).run()
@@ -128,7 +120,7 @@ def pdv_window(master, cod_posto, usuario, senha):
     periodo_entry_pdv.place(x=195, y=60, width=125)
     
     # funções do caixa
-    inicializar = tk.Button(win_pdv, text='Inicializar', bg='dodgerblue3', fg='white', font=('Times, 16 italic'), command=pdv_incializar)
+    inicializar = tk.Button(win_pdv, text='Inicializar', bg='dodgerblue3', fg='white', font=('Times, 16 italic'), command=pdv_inicializar)
     inicializar.place(x=210, y=140, width=130, height=40)
     
     fechamento = tk.Button(win_pdv, text='Fechamento', bg='dodgerblue3', fg='white', font=('Times, 16 italic'), command=pdv_fechamento)
@@ -142,6 +134,8 @@ def pdv_window(master, cod_posto, usuario, senha):
     site_button = tk.Button(win_pdv, text='Sites', bg='dodgerblue3', fg='white', font=('Times, 12'), command=cmd_sites)
     site_button.place(x=10, y=5, width=80, height=30)
 
+    inicializar_all_button = inicializar = tk.Button(win_pdv, text='Iniciar. Tudo', bg='dodgerblue3', fg='white', font=('Times, 10 italic'), command=pdv_inicializar_all)
+    inicializar_all_button.place(x=100, y=5, width=80, height=30)
 
 
     

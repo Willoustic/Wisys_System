@@ -3,11 +3,12 @@ import pyperclip as pc
 from Emsys.login_emsys import Emsys
 from time import sleep
 import os
-from .processos import imagens_pdv, Img, imagens_Emsys
+from .processos import imagens_pdv, Img
 import pandas as pd
 from .Excel import Excel
 from .extra import Extra_excel
 from datetime import datetime
+
 
 
 
@@ -309,17 +310,8 @@ class Caixa():
             Img.click(csv_select, precisão=0.9)
             Img.click(gerar_relatorio, precisão=0.9)
 
-            Img.verificar_até_sair(template, precisão=0.99)
-            Img.verificar_até_achar(template2, 0.99)
 
-            while Img.verifica_na_tela(data_select, precisão=0.9) == False:
-                if Img.verifica_na_tela(template, precisão=0.8) == True:
-                    Img.click(template, precisão=0.8)
-                else:
-                    Emsys.abrir()
-
-                if Img.verifica_na_tela(data_select, precisão=0.9) == False:
-                    px.hotkey('alt', 'esc')
+            Img.verificar_até_achar(data_select, precisão=0.9)
 
 
             # digitar posto
@@ -338,8 +330,10 @@ class Caixa():
             sleep(1)
 
 
-            Img.verificar_até_sair(template, precisão=0.99)
-            Img.verificar_até_achar(template2, 0.99)
+            while True:
+                if Img.verifica_na_tela(template, precisão=0.99) == False or Img.verifica_na_tela(template2, 0.99) == True:
+                    break
+                
 
             while Img.verifica_na_tela(venda_cartao, precisão=0.9) == False:
                 if Img.verifica_na_tela(template, precisão=0.8) == True:

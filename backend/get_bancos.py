@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS Posto_{cod_posto} (
         self.end_conection()
         return dados_nomes
     
+    
     def get_id(self, banco, cod_posto):
         self.cursor.execute(f"SELECT * FROM Posto_{cod_posto}")
         dados = self.cursor.fetchall()

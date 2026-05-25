@@ -48,6 +48,7 @@ def rateio_ctf():
                     Img.click(excluir, 0.9)
                     Img.click(excluir_registro, 0.9)
                     px.write('y')
+                    Img.verificar_até_sair(excluir_registro, precisão=0.9)
                     sleep(1)
 
                 rateio_x, rateio_y = Img.coordenadas(valor_rateio, 0.9)

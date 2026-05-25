@@ -1230,6 +1230,34 @@
    'C:\\Users\\POSTO '
    'NH\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\calendar.py',
    'PYMODULE'),
+  ('charset_normalizer',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\charset_normalizer\\__init__.py',
+   'PYMODULE'),
+  ('charset_normalizer.api',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\charset_normalizer\\api.py',
+   'PYMODULE'),
+  ('charset_normalizer.constant',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\charset_normalizer\\constant.py',
+   'PYMODULE'),
+  ('charset_normalizer.legacy',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\charset_normalizer\\legacy.py',
+   'PYMODULE'),
+  ('charset_normalizer.models',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\charset_normalizer\\models.py',
+   'PYMODULE'),
+  ('charset_normalizer.utils',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\charset_normalizer\\utils.py',
+   'PYMODULE'),
+  ('charset_normalizer.version',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\charset_normalizer\\version.py',
+   'PYMODULE'),
   ('cmd',
    'C:\\Users\\POSTO '
    'NH\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\cmd.py',
@@ -2541,6 +2569,10 @@
   ('netrc',
    'C:\\Users\\POSTO '
    'NH\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\netrc.py',
+   'PYMODULE'),
+  ('ntsecuritycon',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\win32\\lib\\ntsecuritycon.py',
    'PYMODULE'),
   ('nturl2path',
    'C:\\Users\\POSTO '
@@ -8278,6 +8310,18 @@
   ('webbrowser',
    'C:\\Users\\POSTO '
    'NH\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\webbrowser.py',
+   'PYMODULE'),
+  ('win32con',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\win32\\lib\\win32con.py',
+   'PYMODULE'),
+  ('win32evtlogutil',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\win32\\lib\\win32evtlogutil.py',
+   'PYMODULE'),
+  ('winerror',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\win32\\lib\\winerror.py',
    'PYMODULE'),
   ('xlrd',
    'C:\\Users\\POSTO '
