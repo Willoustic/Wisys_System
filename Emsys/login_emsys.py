@@ -146,7 +146,7 @@ class Emsys:
         px.press('enter')
         sleep(3)
         print('Escolhendo o posto')
-        Emsys.escolher_posto(self.posto)
+        Emsys.escolher_posto(self.posto, False)
 
 
     def login_aberto(self):
@@ -198,39 +198,21 @@ class Emsys:
                 try:
                     pdv_aberto = px.locateOnScreen(verify_posto, confidence=0.85)
                 except:
-                    px.press('alt')
-                    sleep(0.2)
-                    px.write('Y1')
-                    sleep(0.2)
-                    px.write('Y03')
-                    sleep(0.2)
-                    Emsys.escolher_posto(self.posto)
+                    Emsys.escolher_posto(self.posto, True)
             
             elif str(self.posto) == '2':
                 verify_posto = os.path.join('Images', 'Emsys', 'Posto_2.png')
                 try:
                     verificar_posto = px.locateOnScreen(verify_posto, confidence=0.85)
                 except:
-                    px.press('alt')
-                    sleep(0.2)
-                    px.write('Y1')
-                    sleep(0.2)
-                    px.write('Y03')
-                    sleep(0.2)
-                    Emsys.escolher_posto(self.posto)
+                    Emsys.escolher_posto(self.posto, True)
 
             if str(self.posto) == '3':
                 verify_posto = os.path.join('Images', 'Emsys', 'Posto_3.png')
                 try:
                     verificar_posto = px.locateOnScreen(verify_posto, confidence=0.85)
                 except:
-                    px.press('alt')
-                    sleep(0.2)
-                    px.write('Y1')
-                    sleep(0.2)
-                    px.write('Y03')
-                    sleep(0.2)
-                    Emsys.escolher_posto(self.posto)
+                    Emsys.escolher_posto(self.posto, True)
 
         return login
         
@@ -244,10 +226,18 @@ class Emsys:
         sleep(0.5)
         
 
-    def escolher_posto(posto):
+    def escolher_posto(posto, click_to_switch):
         #print('escolhendo o posto')
         posto_img = os.path.join('Images', 'Emsys', 'SELECT_POSTO.png')
-          
+        
+        if click_to_switch:
+            px.press('alt')
+            sleep(0.2)
+            px.write('Y1')
+            sleep(0.2)
+            px.write('Y03')
+            sleep(0.2)
+
         Img.verificar_até_achar(posto_img, 0.9)
         
         sleep(1)

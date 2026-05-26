@@ -84,13 +84,18 @@ def pdv_window(master, cod_posto, usuario, senha):
             pass
 
         if len(data_pdv) >= 4:
+            cont = 1
             banco = Banco()
-    
+            
             for posto in banco.get_nomes():
                 if (banco.get_class(posto) == 'All'):
                     cod = banco.get_id(posto)
-                    Emsys(posto=cod, name=usuario, password=senha).run()
+                    if cont == 1:
+                        Emsys(posto=cod, name=usuario, password=senha).run()
+                    else:
+                        Emsys.escolher_posto(cod, True)
                     Caixas(dia=dia, mes=mes, ano=ano, posto=cod).Iniciar()
+                    cont += 1
 
 
     def cmd_sites():
