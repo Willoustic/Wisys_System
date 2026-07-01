@@ -295,6 +295,10 @@ class Chrome():
         abrir_chrome(site.frota)
 
 
+    def pagbank(self):
+        abrir_chrome(site.pagbank)
+
+
 
 class BotMaster():
     """USA O CHROME E O PYAUTOGUI PARA AUTOMATIZAR TAREFAS"""
@@ -370,6 +374,8 @@ class BotMaster():
 
     def zs(self):
         """USA O CHROME PARA ACESSAR CARTÕES DA ZS"""
+        self.bot.pagbank()
+        sleep(2)
         self.bot.cielo()
         sleep(2)
         self.bot.agilli()

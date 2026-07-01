@@ -18,3 +18,4 @@ class Site():
         self.neo = "https://neofacilidades.com.br/Intranet/Credenciado/Login"# OK
         self.prime = "https://primebeneficios.com.br/Intranet/Prime/Login"# OK
         self.frota = "https://novohorizonte.frotaflex.com.br/duplicatas"
+        self.pagbank = "https://acesso.pagbank.com.br"
