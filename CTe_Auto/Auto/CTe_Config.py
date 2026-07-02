@@ -15,7 +15,7 @@ class Auto_CTe():
 
             # Limpar tela
             Clicks.limpar_tela()
-
+        
             # Tela conhecimento
             Clicks.digitar_n_conhecimento(n_conhecimento=xml.numero)
             Clicks.digitar_serie(n_serie=xml.serie)

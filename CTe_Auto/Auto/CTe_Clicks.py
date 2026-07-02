@@ -10,9 +10,12 @@ class Clicks():
     # Tela Conhecimento
     def limpar_tela():
         limpar = cte.join('limpar.png')
+        conhecimento_limpo = cte.join('conhecimento_limpo.png')
+
         Img.click(limpar, 0.9)
         sleep(1)
         px.write('n')
+        Img.verificar_até_achar(conhecimento_limpo)
         sleep(1)
 
     def digitar_n_conhecimento(n_conhecimento):
