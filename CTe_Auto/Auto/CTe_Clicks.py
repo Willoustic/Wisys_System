@@ -15,7 +15,7 @@ class Clicks():
         Img.click(limpar, 0.9)
         sleep(1)
         px.write('n')
-        Img.verificar_até_achar(conhecimento_limpo)
+        Img.verificar_até_achar(conhecimento_limpo, 0.9)
         sleep(1)
 
     def digitar_n_conhecimento(n_conhecimento):
