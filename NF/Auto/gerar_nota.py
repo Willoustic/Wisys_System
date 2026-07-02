@@ -84,8 +84,10 @@ class Nota():
         px.hotkey('winleft', 'up')
         px.hotkey('winleft', 'up')
         px.hotkey('winleft', 'down')
+        px.press('esc')
+
         x, y = Img.coordenadas(escolha_arq, 0.9)
-        px.click(x+50, y+100)
+        px.click(x, y)
         while True:
             if Img.verifica_na_tela(downloads, 0.9) == True:
                 break
@@ -188,11 +190,18 @@ class Ticket():
 
 
     def escolher_arquivo(self, aba):
+        from os.path import expanduser, join
         escolher_aba = self.pst.join('escolher_aba.png')
         escolher_arquivo = self.pst.join('escolher_arquivo.png')
         escolher_aba_1 = self.pst.join('escolher_aba_1.png')
         anexar_good = self.pst.join('anexar_good.png')
+        data_mod = self.pst.join('data_mod.png')
+        nome = self.pst.join("nome.png")
+        hoje = self.pst.join("hoje.png")
+        nome_1 = self.pst.join("nome_1.png")
         
+        caminho = str(join(expanduser("~"), 'Downloads'))
+
         if aba == 'antiga':
             Img.click(escolher_arquivo, 0.8)
         elif aba == 'nova':
@@ -205,17 +214,33 @@ class Ticket():
             if Img.verifica_na_tela(escolher_aba_1, 0.9) == True:
                 x, y = Img.coordenadas(escolher_aba_1, 0.9)
                 break
-            
-        px.click(x, y)
-        sleep(1)
-        for i in range(0, 2):
-            px.hotkey('shift', 'tab')
-        px.press('up')
-        px.press('down')
-        px.press('enter')
-        sleep(0.9)
-        
 
+        px.click(x, y)
+        sleep(0.5)
+
+        while True:
+            if Img.verifica_na_tela(nome, 0.9) == True:
+                x1, y1 = Img.coordenadas(nome, 0.9)
+                print('nome')
+                break
+            elif Img.verifica_na_tela(nome_1, 0.9) == True:
+                x1, y1 = Img.coordenadas(nome_1, 0.9)
+                print('nome_1')
+                break
+            else:
+                Img.click(escolher_aba_1, 0.9)
+                print('nenhum dos dois até agora')
+
+        px.click(x1+120, y1)
+        px.hotkey('ctrl', 'a')
+        px.press('del')
+        px.write(caminho)
+        px.press('enter')
+        
+        x, y = Img.coordenadas(hoje, 0.9)
+        px.click(x, y+20)
+        sleep(1)
+        px.press('enter')
 
     def confirmar(self):
         continuar_button = self.pst.join('continuar_button.png')
@@ -286,6 +311,7 @@ class Valecard():
         data_mod = self.pst.join('data_mod.png')
         hoje = self.pst.join("hoje.png")
         nome = self.pst.join("nome.png")
+        nome_1 = self.pst.join("nome_1.png")
 
 
         caminho = str(join(expanduser("~"), 'Downloads'))
@@ -296,28 +322,30 @@ class Valecard():
             elif Img.verifica_na_tela(escolher_aba_1, 0.9) == True:
                 Img.click(escolher_aba_1, 0.9)
                 break   
-
-        x1, y1 = Img.coordenadas(nome, 0.92)
+    
+        while True:
+            if Img.verifica_na_tela(nome, 0.9) == True:
+                x1, y1 = Img.coordenadas(nome, 0.9)
+                break
+            elif Img.verifica_na_tela(nome_1, 0.9) == True:
+                x1, y1 = Img.coordenadas(nome_1, 0.9)
+                break
+            else:
+                Img.click(escolher_aba_1, 0.9)
+                
         px.click(x1+120, y1)
         px.hotkey('ctrl', 'a')
         px.press('del')
-        
         px.write(caminho)
         px.press('enter')
+
         cont = 0
         while True:
-            if cont >= 2:
-                if Img.verifica_na_tela(hoje, 0.9) != True:
-                    Img.click(data_mod, 0.9)
-                    cont += 1
-            else:
-                break
-            Img.click(data_mod, 0.9)
-            cont += 1
-            sleep(0.2)
-            if Img.verifica_na_tela(hoje, 0.9) != True:
+            if cont <= 1:
                 Img.click(data_mod, 0.9)
                 cont += 1
+            elif Img.verifica_na_tela(hoje, 0.9) != True:
+                Img.click(data_mod, 0.9)
             else:
                 break
             
