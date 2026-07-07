@@ -10,8 +10,6 @@ from .extra import Extra_excel
 from datetime import datetime
 
 
-
-
 def verificar():
 
     photo = os.path.join('Images', 'PDV_Automatico', 'fechado.png')
@@ -364,7 +362,6 @@ class Caixa():
             Extra_excel(arquivo=f'{caminho_total}.xlsx')
             
             
-
     def fechamento_por_vendedor(posto, data):
         try:
             posto = int(posto)

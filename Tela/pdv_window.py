@@ -3,6 +3,7 @@ import tkinter as tk
 from PDV_Automatico.pdv import Caixa, Caixas
 from Emsys.login_emsys import Emsys
 from functions.caminho import resource_path
+from Rel_Faltas.Config_Auto import Enviar_Relatório_de_Faltas
 from Sites.bot_chrome import BotMaster
 import os
 from backend.get_postos import Banco
@@ -97,10 +98,13 @@ def pdv_window(master, cod_posto, usuario, senha):
                     Caixas(dia=dia, mes=mes, ano=ano, posto=cod).Iniciar()
                     cont += 1
 
+    def enviar_faltas():
+        Enviar_Relatório_de_Faltas(cod_posto=cod_posto, usuario=usuario, senha=senha)
+
 
     def cmd_sites():
         BotMaster(cod=cod_posto).run()
-    
+
 
     # Janela
 
@@ -141,6 +145,9 @@ def pdv_window(master, cod_posto, usuario, senha):
 
     inicializar_all_button = inicializar = tk.Button(win_pdv, text='Iniciar. Tudo', bg='dodgerblue3', fg='white', font=('Times, 10 italic'), command=pdv_inicializar_all)
     inicializar_all_button.place(x=100, y=5, width=80, height=30)
+
+    faltas = inicializar = tk.Button(win_pdv, text='Enviar Faltas', bg='dodgerblue3', fg='white', font=('Times, 10 italic'), command=enviar_faltas)
+    faltas.place(x=400, y=105, width=80, height=30)
 
 
     

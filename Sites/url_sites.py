@@ -10,8 +10,8 @@ class Site():
         self.policard = "https://wss.upbrasil.com/siteestabelecimentonew/inicio"# OK
         self.stone = "https://conta.stone.com.br/vendas"
         self.wizeo = "https://bra.merchant.fuelandfleet.com/sales-consultation"# OK
-        self.vibra = "https://cn.vibraenergia.com.br/login/logout" # OK
-        self.vibra_config = "https://cn.vibraenergia.com.br/cn/premmia/app/configurarposto/"
+        self.vibra = "https://cn.vibraenergia.com.br/premmia/meuposto/login" # OK
+        self.vibra_config = "https://cn.vibraenergia.com.br/premmia/meuposto"
         self.qrlinx = "https://portal.linxpayhub.com.br/signin" # ok
         self.ticket = "https://parceiro.edenredmobilidade.com.br/EstabelecimentoSSL/NovaHome.cfm" # ok
         self.link = "https://linkbeneficios.com.br/Intranet/Credenciado/Login"# OK

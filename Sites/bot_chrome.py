@@ -3,9 +3,10 @@
 from time import sleep
 import pyautogui as px
 from backend.get_logins import Portal
-from Sites.chrome import abrir_chrome
+from functions.chrome import abrir_chrome
 from Sites.url_sites import Site
 from Sangrias.autom.auto import caps_lock_ativado
+from functions.verificar_site_aberto import verificar_pagina_aberta
 
 site = Site()
 portal = Portal()
@@ -36,7 +37,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA CIELO"""
         login, senha = portal.get_portal("cielo", self.posto)
         abrir_chrome(site.cielo)
-        sleep(3)
+        verificar_pagina_aberta()
         pesquisar_elemento_da_pagina('cpf')
         sleep(1)
         px.write(login)
@@ -53,6 +54,7 @@ class Chrome():
     def wizeo(self):
         """USA O CHROME PARA ENTRAR NA WIZEO"""
         abrir_chrome(site.wizeo)
+        verificar_pagina_aberta()
 
 
     def fancard(self):
@@ -60,12 +62,12 @@ class Chrome():
         # Sessão de Login
         login, senha = portal.get_portal("fancard", self.posto)
         abrir_chrome(site.fancard)
-        sleep(1)
+        sleep(3)
         pesquisar_elemento_da_pagina('sair')
         px.press('enter')
         sleep(1)
         recarregar()
-        sleep(1)
+        verificar_pagina_aberta()
         pesquisar_elemento_da_pagina('lojista')
         px.press('enter')
         sleep(1)
@@ -91,7 +93,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA PRIME"""
         login, senha = portal.get_portal("prime", self.posto)
         abrir_chrome(site.prime)
-        sleep(3)
+        verificar_pagina_aberta()
         pesquisar_elemento_da_pagina('sair')
         px.press('enter')
         sleep(1)
@@ -126,7 +128,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA LINK"""
         login, senha = portal.get_portal("link", self.posto)
         abrir_chrome(site.link)
-        sleep(2)
+        verificar_pagina_aberta()
         pesquisar_elemento_da_pagina('sair')
         px.press('enter')
 
@@ -155,8 +157,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA NEO"""
         login, senha = portal.get_portal("neo", self.posto)
         abrir_chrome(site.neo)
-
-        sleep(2)
+        verificar_pagina_aberta()
         pesquisar_elemento_da_pagina('sair')
         px.press('enter')
 
@@ -185,7 +186,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA AGILLI"""
         login, senha = portal.get_portal("agilli", self.posto)
         abrir_chrome(site.agilli)
-        sleep(6)
+        verificar_pagina_aberta()
         px.hotkey('ctrl', 'a')
         px.write(login)
         px.press('tab')
@@ -204,7 +205,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA CTF"""
         login, senha = portal.get_portal("ctf", self.posto)
         abrir_chrome(site.ctf)
-        sleep(1)
+        verificar_pagina_aberta()
         pesquisar_elemento_da_pagina('cliente ctf')
         px.press('enter')
 
@@ -219,7 +220,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA QRLINX"""
         login, senha = portal.get_portal('qrlinx', self.posto)
         abrir_chrome(site.qrlinx)
-        sleep(1)
+        verificar_pagina_aberta()
         px.hotkey('ctrl', 'a')
         px.write(login)
         px.press('tab')
@@ -232,7 +233,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA TICKET"""
         login, senha = portal.get_portal('ticket', self.posto)
         abrir_chrome(site.ticket)
-        sleep(6)
+        verificar_pagina_aberta()
         pesquisar_elemento_da_pagina('email')
         px.press('tab')
         px.write(login)
@@ -246,7 +247,7 @@ class Chrome():
         """USA O CHROME PARA ENTRAR NA POLICARD"""
         login, senha = portal.get_portal('policard', self.posto)
         abrir_chrome(site.policard)
-        sleep(3)
+        verificar_pagina_aberta()
         px.hotkey('ctrl', 'a')
         px.press('del')
         px.write(login)
@@ -266,8 +267,7 @@ class Chrome():
 
         login, senha = portal.get_portal('vibra', self.posto)
         abrir_chrome(site.vibra)
-        sleep(3)
-        px.press('tab')
+        verificar_pagina_aberta()
         px.hotkey('ctrl', 'a')
         px.write(login)
         sleep(0.5)
@@ -281,7 +281,9 @@ class Chrome():
         sleep(5)
         abrir_chrome(site.vibra_config)
         sleep(5)
-        pesquisar_elemento_da_pagina('conferencia')
+        pesquisar_elemento_da_pagina('pagamentos a receber')
+        sleep(0.5)
+        px.press('tab')
         sleep(0.5)
         px.press('enter')
 
@@ -289,15 +291,17 @@ class Chrome():
     def stone(self):
         """USA O CHROME PARA ENTRAR NA STONE"""
         abrir_chrome(site.stone)
+        verificar_pagina_aberta()
 
 
     def frota_flex(self):
         abrir_chrome(site.frota)
-
+        verificar_pagina_aberta()
+        
 
     def pagbank(self):
         abrir_chrome(site.pagbank)
-
+        verificar_pagina_aberta()
 
 
 class BotMaster():
