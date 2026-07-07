@@ -905,6 +905,19 @@
    'C:\\Users\\POSTO '
    'NH\\Documents\\GitHub\\Wisys_System\\.env\\Lib\\site-packages\\PIL\\features.py',
    'PYMODULE'),
+  ('Rel_Faltas', '-', 'PYMODULE'),
+  ('Rel_Faltas.Config_Auto',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\Rel_Faltas\\Config_Auto.py',
+   'PYMODULE'),
+  ('Rel_Faltas.Config_Clicks',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\Rel_Faltas\\Config_Clicks.py',
+   'PYMODULE'),
+  ('Rel_Faltas.Load_Nomes',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\Rel_Faltas\\Load_Nomes.py',
+   'PYMODULE'),
   ('Sangrias', '-', 'PYMODULE'),
   ('Sangrias.autom', '-', 'PYMODULE'),
   ('Sangrias.autom.auto',
@@ -927,9 +940,6 @@
   ('Sites', '-', 'PYMODULE'),
   ('Sites.bot_chrome',
    'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\Sites\\bot_chrome.py',
-   'PYMODULE'),
-  ('Sites.chrome',
-   'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\Sites\\chrome.py',
    'PYMODULE'),
   ('Sites.url_sites',
    'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\Sites\\url_sites.py',
@@ -1687,8 +1697,15 @@
    'C:\\Users\\POSTO '
    'NH\\Documents\\GitHub\\Wisys_System\\functions\\caminho.py',
    'PYMODULE'),
+  ('functions.chrome',
+   'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\functions\\chrome.py',
+   'PYMODULE'),
   ('functions.tela',
    'C:\\Users\\POSTO NH\\Documents\\GitHub\\Wisys_System\\functions\\tela.py',
+   'PYMODULE'),
+  ('functions.verificar_site_aberto',
+   'C:\\Users\\POSTO '
+   'NH\\Documents\\GitHub\\Wisys_System\\functions\\verificar_site_aberto.py',
    'PYMODULE'),
   ('getopt',
    'C:\\Users\\POSTO '
