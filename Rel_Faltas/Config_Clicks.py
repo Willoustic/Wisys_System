@@ -8,7 +8,6 @@ import pyautogui as px
 from time import sleep
 
 def ajuste_data(data):
-    data = datetime.today().month
     
     if len(str(data)) < 2:
         data = f'0{data}'
@@ -44,6 +43,8 @@ class Clicks_Sistema():
         mes = datetime.today().month
         ano = datetime.today().year
 
+        print(dia, mes, ano)
+
         self.DIA_ATUAL = ajuste_data(dia)
         self.MES_ATUAL = ajuste_data(mes)
         self.MES_ANTERIOR = get_mes_anterior(mes)
@@ -51,6 +52,7 @@ class Clicks_Sistema():
         self.ANO_INICIAL = get_ano_inicial(mes, ano)
 
 
+        
     def clicar_administrativo(self):
         adm = self.pasta.join('adm.png')
         Img.click(adm, 0.9)
@@ -83,7 +85,9 @@ class Clicks_Sistema():
 
         px.click(x+50, y)
         px.write(f'26{self.MES_ANTERIOR}{self.ANO_INICIAL}')
+        print(f'26{self.MES_ANTERIOR}{self.ANO_INICIAL}')
         px.write(f'{self.DIA_ATUAL}{self.MES_ATUAL}{self.ANO_ATUAL}')
+        print(f'{self.DIA_ATUAL}{self.MES_ATUAL}{self.ANO_ATUAL}')
 
 
     def selecionar_tipo_pdf(self):
