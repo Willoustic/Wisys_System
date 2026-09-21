@@ -2,6 +2,35 @@ import os
 import pyautogui as px
 from time import sleep
 import sys
+import mss
+import pyscreeze
+from PIL import Image
+from pyscreeze import Box
+
+MONITOR_ALVO = 0  # 1 = primeiro monitor, 2 = segundo, 0 = todos juntos
+
+
+def listar_monitores():
+    """Rode uma vez para ver qual número é cada monitor."""
+    with mss.mss() as sct:
+        for i, m in enumerate(sct.monitors):
+            print(i, m)
+
+
+def localizar(imagem, precisão, monitor=None):
+    monitor = MONITOR_ALVO if monitor is None else monitor
+    with mss.mss() as sct:
+        mon = sct.monitors[monitor]
+        shot = sct.grab(mon)
+
+    tela = Image.frombytes('RGB', shot.size, shot.rgb)
+    box = pyscreeze.locate(imagem, tela, confidence=precisão)
+    if box is None:  # versões antigas do pyscreeze retornam None
+        raise LookupError('Imagem não encontrada')
+
+    # Converte da posição dentro do monitor para a posição real na tela
+    return Box(box.left + mon['left'], box.top + mon['top'], box.width, box.height)
+
 
 class imagens_pdv():
     def __init__(self, pasta):
@@ -43,7 +72,7 @@ class Img:
                 x = cancelar_operacao()
                 if not x:
                     break
-                achar = px.locateOnScreen(imagem, confidence=precisão)
+                achar = localizar(imagem, precisão)
                 #print(f'Procurando Img:', imagem)
                 
             except Exception as e:
@@ -62,7 +91,7 @@ class Img:
                 x = cancelar_operacao()
                 if not x:
                     break
-                achar = px.locateOnScreen(imagem, confidence=precisão)
+                achar = localizar(imagem, precisão)
                 #print(f'Procurando Img:', imagem)
             except Exception as e:
                 pass
@@ -78,7 +107,7 @@ class Img:
                 x = cancelar_operacao()
                 if not x:
                     break
-                achar = px.locateOnScreen(imagem, confidence=precisão)
+                achar = localizar(imagem, precisão)
                 #print(f'Procurando Img:', imagem)
             except Exception as e:
                 pass
@@ -88,7 +117,7 @@ class Img:
 
     def verifica_na_tela(imagem, precisão):
         try: 
-            achar = px.locateOnScreen(imagem, confidence=precisão)
+            achar = localizar(imagem, precisão)
             #print(f'Procurando Img:', imagem)
         except Exception as e:
             pass
@@ -103,7 +132,7 @@ class Img:
                 x = cancelar_operacao()
                 if not x:
                     break
-                achar = px.locateOnScreen(imagem, confidence=precisão)
+                achar = localizar(imagem, precisão)
                 #print(f'Procurando Img:', imagem)
             except Exception as e:
                 #print('não achou')
@@ -119,7 +148,7 @@ class Img:
                 x = cancelar_operacao()
                 if not x:
                     break
-                achar = px.locateOnScreen(imagem, confidence=precisão)
+                achar = localizar(imagem, precisão)
                 #print(f'Procurando Img:', imagem)
             except Exception as e:
                 pass

@@ -62,7 +62,6 @@ class Tela:
                 self.botao_depositos()                
                 self.botao_pdv()                 
                 self.botao_nf()                
-                self.botao_contapagar()  
                 self.botao_cte()
                              
 
@@ -73,7 +72,6 @@ class Tela:
 
         def acesso_car():
             if self.tipo == 'CaP':
-                self.botao_contapagar()
                 pass
 
         if self.usuario != 'None':
@@ -136,14 +134,6 @@ class Tela:
         self.nf_button.img = self.nf_img
         self.nf_button.place(relx=0.1, rely=0.40, height=50, width=100)
 
-    def botao_contapagar(self):
-        from .cap_window import cap_window
-        def cap():
-            cap_window(self.app, self.id)
-        self.cap_img = tk.PhotoImage(file=(resource_path('Images', 'buttons', 'cap.png')))
-        self.cap_button = tk.Button(self.app, image=self.cap_img, highlightthickness=100, command=cap)
-        self.cap_button.image = self.cap_img
-        self.cap_button.place(relx=0.4, rely=0.40, height=50, width=100)
 
     def botao_cte(self):
         from .cte_window import Cte_window
@@ -152,7 +142,7 @@ class Tela:
         self.cap_img = tk.PhotoImage(file=(resource_path('Images', 'buttons', 'cte.png')))
         self.cap_button = tk.Button(self.app, image=self.cap_img, highlightthickness=100, command=cte)
         self.cap_button.image = self.cap_img
-        self.cap_button.place(relx=0.7, rely=0.40, height=50, width=100)
+        self.cap_button.place(relx=0.4, rely=0.40, height=50, width=100)
 
 
     # configurações na tela
