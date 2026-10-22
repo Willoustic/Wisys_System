@@ -244,6 +244,14 @@ class Clicks():
 
     def incluir_cte():
         incluir_icon = cte.join("incluir_cte.png")
+        incluido = cte.join('incluido.png')
         x, y = Img.coordenadas(incluir_icon, 0.9)
         sleep(0.3)
         px.click(x, y)
+        Img.verificar_até_achar(incluido, 0.9)
+        Img.click(incluido, 0.9)
+        px.press('enter')
+        Img.verificar_até_sair(incluido, 0.9)
+        sleep(0.5)
+
+
