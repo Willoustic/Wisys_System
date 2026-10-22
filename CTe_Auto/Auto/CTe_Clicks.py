@@ -124,7 +124,7 @@ class Clicks():
             px.press('enter')
         elif str(cid_destino) in 'SAO GONCALO DO AMARANTE':
             photo_destino = cte.join('sga_photo.png')
-            Img.click(photo_destino, 0.9)
+            Img.click(photo_destino, 0.98)
             sleep(0.4)
             px.press('enter')
         else:
