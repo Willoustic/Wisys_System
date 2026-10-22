@@ -8,13 +8,15 @@ def get_text(root, path, ns):
     elemento = root.find(path, ns)
     return elemento.text if elemento is not None else ""
 
+
 class Ler_cte():
-    def __init__(self):
-        # Abre seletor de arquivo
-        caminho = filedialog.askopenfilename(
-            title="Selecionar arquivo CT-e",
-            filetypes=[("Arquivos XML", "*.xml")]
-        )
+    def __init__(self, caminho=None):
+        if caminho is None:
+            # Abre seletor de arquivo
+            caminho = filedialog.askopenfilename(
+                title="Selecionar arquivo CT-e",
+                filetypes=[("Arquivos XML", "*.xml")]
+            )
 
         try:
             tree = ET.parse(caminho)
@@ -73,11 +75,11 @@ class Ler_cte():
                 }
 
             messagebox.showinfo("CT-e carregado", info)
-        
+
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao ler XML como CTe:\n{e}")
 
-# exemplo de como deve ser       
+# exemplo de como deve ser
 """xml = Ler_cte()
 xml.get_all_info()
 print(xml.numero)"""

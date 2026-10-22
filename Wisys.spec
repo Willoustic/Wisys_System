@@ -5,7 +5,7 @@ a = Analysis(
     ['Wisys.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('Images', 'Images')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['Images\\configure_tela\\icon.ico'],
+    icon=['Images/configure_tela/icon.ico'],
 )

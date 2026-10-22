@@ -61,7 +61,6 @@ def cancelar_operacao():
         x = False
     else:
         x = True
-
     return x
 
 
@@ -139,7 +138,7 @@ class Img:
                 pass
                 break
             else:
-                #print('achou)
+                #print('achou')
                 pass
                 
     def coordenadas(imagem, precisão):

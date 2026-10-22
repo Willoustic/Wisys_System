@@ -1,7 +1,7 @@
 import tkinter as tk
 from functions.tela import tela_na_resolução
 from CTe_Auto.Auto.CTe_Config import Auto_CTe
-import os
+from tkinter import filedialog
 from functions.caminho import resource_path
 
 class Cte_window():
@@ -25,14 +25,25 @@ class Cte_window():
         def run_cte():
             Auto_CTe.run()
 
+        def run_cte_pasta():
+            pasta = filedialog.askdirectory(title="Selecionar pasta com XMLs")
+            print('ok')
+            if pasta:
+                resumo = Auto_CTe.run_pasta(pasta, subpasta="Feitos")
+                print(resumo)
+
         # background
         photo_cte = tk.PhotoImage(file=resource_path('Images', 'configure_tela', 'cte_window.png'))
         self.label_cte = tk.Label(self.app, image=photo_cte)
-        self.label_cte.image = photo_cte
+        self.label_cte.image = photo_cte 
         self.label_cte.pack()
 
         # Rodar programa cte
         button_1 = tk.Button(self.app, text='Escolher XML', bg='dodgerblue3',
                              fg='white', font=('Times, 12 italic'), command=run_cte)
         button_1.place(relx=0.17, rely=0.5, relwidth=0.7)
+
+        button_2 = tk.Button(self.app, text='Escolher Pasta', bg='green4',
+                             fg='white', font=('Times, 12 italic'), command=run_cte_pasta)
+        button_2.place(relx=0.17, rely=0.7, relwidth=0.7)
        

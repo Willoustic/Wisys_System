@@ -15,7 +15,7 @@ class Clicks():
         Img.click(limpar, 0.9)
         sleep(1)
         px.write('n')
-        Img.verificar_até_achar(conhecimento_limpo, 0.9)
+        Img.verificar_até_achar(conhecimento_limpo, 0.99)
         sleep(1)
 
     def digitar_n_conhecimento(n_conhecimento):
@@ -105,17 +105,31 @@ class Clicks():
     def digitar_cidade_destino(cid_destino):
         cid_dest = cte.join('cid_dest.png')
         busca = cte.join('busca.png')
-
         x, y = Img.coordenadas(cid_dest, 0.9)
         px.doubleClick(x+150, y)
         px.write(f'%{cid_destino}')
         px.press('enter')
         contador = 0
+
         while Img.verifica_na_tela(busca, 0.9) == False:
-            if contador == 2:
+            if contador == 3:
                 break
             sleep(0.5)
             contador += 1
+
+        if str(cid_destino) in 'NATAL':
+            photo_destino = cte.join('natal_photo.png')
+            Img.click(photo_destino, 0.9)
+            sleep(0.4)
+            px.press('enter')
+        elif str(cid_destino) in 'SAO GONCALO DO AMARANTE':
+            photo_destino = cte.join('sga_photo.png')
+            Img.click(photo_destino, 0.9)
+            sleep(0.4)
+            px.press('enter')
+        else:
+            pass
+
         Img.verificar_até_sair(busca, 0.9)
 
 
@@ -213,17 +227,23 @@ class Clicks():
         x, y = Img.coordenadas(centro, 0.9)
         px.click(x+200, y)
         px.write('adm')
+        sleep(0.3)
         px.press('enter')
+        sleep(0.3)
         px.write('100')
+        sleep(0.3)
         px.press('tab')
+        sleep(0.3)
 
     def inserir_rateio():
         # Se baseando no valor rateio
         valor_rateio = cte.join('valor_rateio.png')
         x, y = Img.coordenadas(valor_rateio, 0.9)
+        sleep(0.3)
         px.click(x+200, y)
 
     def incluir_cte():
         incluir_icon = cte.join("incluir_cte.png")
         x, y = Img.coordenadas(incluir_icon, 0.9)
+        sleep(0.3)
         px.click(x, y)
